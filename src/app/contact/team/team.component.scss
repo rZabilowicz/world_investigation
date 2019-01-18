@@ -1,0 +1,23 @@
+.container{
+    position: relative;
+    top: 70px;
+}
+
+.member-img {
+    width: 270px;
+    height: 230px;
+    background: white;
+    box-shadow: black 0.1em 0.1em 0.2em;
+}
+
+@media (max-width: 991px) {
+
+    .member-img {
+        width: 270px;
+        height: 230px;
+        background: white;
+        box-shadow: black 0.1em 0.1em 0.2em;
+    }
+   
+
+}

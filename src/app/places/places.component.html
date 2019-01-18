@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <h1>World in your hand!</h1>
+        <h5>Check information about places by geographical coordinates.</h5>
+        <hr/>
+        <h5>Correct value format is from -90 to +90. Remember about adding sign "+" or "-".</h5>
+
+        <div class="form-group row" [formGroup]="form">
+          <div class="col-sm-6">
+              <label for="height">Geographical height</label>
+              <input id="height" type="text" class="form-control" placeholder="Search" [(value)]="lat" formControlName="height">
+              <p *ngIf="form.pending">Please wait ...</p>
+            
+              <ng-container *ngIf="form.get('height') as formField">
+                <div *ngIf="formField.touched || formField.dirty" class="text-danger">
+                  <div *ngIf="formField.hasError('required')">
+                    Field is required
+                  </div>
+                  <div *ngIf="formField.getError('minlength') as error">
+                    Minimal query length is {{error.requiredLength}}
+                  </div>
+                  <div *ngIf="formField.getError('pattern') as error">
+                    Wrong format!
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="width">Geographical width</label>
+                <input id="width" type="text" class="form-control" placeholder="Search" [value]="lng" formControlName="width">
+                <p *ngIf="form.pending">Please wait ...</p>
+              
+                <ng-container *ngIf="form.get('width') as formField">
+                  <div *ngIf="formField.touched || formField.dirty" class="text-danger">
+                    <div *ngIf="formField.hasError('required')">
+                      Field is required
+                    </div>
+                    <div *ngIf="formField.getError('minlength') as error">
+                      Minimal query length is {{error.requiredLength}}
+                    </div>
+                    <div *ngIf="formField.getError('pattern')">
+                      Wrong format!
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            
+          </div>
+
+          <div class="row mb-3 justify-content-center">
+              <div  class="col-sm-6 text-center">
+                  <button class="btn btn-light button" (click)="random()">Random</button>
+                  <button class="btn btn-light button" (click)="confirm()">Confirm</button>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <h1>Place description</h1>
+                <ul class="list-group">
+                  <li class="list-group-item">Sunrise: {{placeDesc.sunrise}}</li>
+                  <li class="list-group-item">Solar noon: {{placeDesc.solar_noon}}</li>
+                  <li class="list-group-item">Day length: {{placeDesc.day_length}}</li>
+                  <li class="list-group-item">Civil twilight begin: {{placeDesc.civil_twilight_begin}}</li>
+                  <li class="list-group-item">Civil twilight end: {{placeDesc.civil_twilight_end}}</li>
+                  <li class="list-group-item">Neutrical twilight begin: {{placeDesc.nautical_twilight_begin}}</li>
+                  <li class="list-group-item">Neutrical twilight end: {{placeDesc.nautical_twilight_end}}</li>
+                  <li class="list-group-item">Astronomical twilight begin: {{placeDesc.astronomical_twilight_begin}}</li>
+                  <li class="list-group-item">Astronomical twilight end: {{placeDesc.astronomical_twilight_end}}</li>
+                </ul>
+            </div>
+          </div>
+
+    </div>
+  </div>
+</div>
+

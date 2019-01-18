@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Try to find inspirating photo:</h1>
+          <div class="form-group mb-3" [formGroup]="queryForm">
+  
+              <input type="text" class="form-control" placeholder="Search" [value]="descripition" formControlName="query">
+              <p *ngIf="queryForm.pending">Please wait ...</p>
+            
+              <ng-container *ngIf="queryForm.get('query') as queryField">
+                <div *ngIf="queryField.touched || queryField.dirty" class="text-danger">
+                  <div *ngIf="queryField.hasError('required')">
+                    Field is required
+                  </div>
+                  <div *ngIf="queryField.getError('minlength') as error">
+                    Minimal query length is {{error.requiredLength}}
+                  </div>
+                </div> 
+              </ng-container>
+            
+            </div>
+            
+            <div class="form-group form-check mb-3">
+              <input type="checkbox" class="form-check-input" id="photoSize" [checked]="resize" (change)="resize = !resize">
+              <label class="form-check-label" for="photoSize">Find in another size</label>
+            </div>
+            
+            <div *ngIf="resize" class="mb-3">
+              <p>Please note that this is approximate photo size!</p>
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label class="form-check-label" for="photoHeight">Height</label>
+                    <input type="text" class="form-control" placeholder="Height" id="photoHeight" [value]="hightForm"
+                        (keyup)="hightForm = $event.target.value">
+                  </div>
+                <div class="form-group col-sm-6" >
+                  <label class="form-check-label" for="photoWidth">Width</label>
+                  <input type="text" class="form-control" placeholder="Width" id="photoWidth" [value]="widthForm"
+                      (keyup)="widthForm = $event.target.value">
+                </div> 
+              </div>
+              
+             
+            </div>
+
+            <div *ngIf="resize" class="row mb-3 justify-content-center">
+                <div  class="col-sm-6 text-center">
+                    <button class="btn btn-light button" (click)="defaultSize()">Default size</button>
+                    <button class="btn btn-light button" (click)="confirmSize()">Confirm size</button>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <ng-container *ngFor="let photo of photos" class="card" >
+                  <div class="col-xl-3 col-lg-4 col-md-6">
+                      <img class="photo-card" [src]="photo" width="270" height="300">
+                  </div>   
+                </ng-container>
+              </div> 
+
+      </div>
+    </div>
+  </div>
+  
+  

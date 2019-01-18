@@ -1,0 +1,20 @@
+.time {
+    font-size: 700%;
+    text-shadow: black 0.1em 0.1em 0.3em;
+    &-date {
+        text-shadow: black 0.1em 0.1em 0.2em;
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .time {
+        font-size: 300%;
+        text-shadow: black 0.1em 0.1em 0.3em;
+        &-date {
+            text-shadow: black 0.1em 0.1em 0.2em;
+        }
+    }
+
+}

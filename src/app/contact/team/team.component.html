@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row mb-3 text-center bg align-items-center">
+      <div class="col-sm-12 col-md-4" *ngFor="let member of $teamMembers">
+            <div class="">
+                <img src="{{ member.url }}" class="rounded-circle member-img">
+                <p></p>
+                <h2>{{ member.name }}</h2>
+                <p>{{ member.desc }}</p>
+            </div>
+      </div>
+    </div>
+</div>
+
